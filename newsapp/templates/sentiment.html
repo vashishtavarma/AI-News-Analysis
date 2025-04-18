@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-md-12">
+    <h2>{{ region.name.capitalize }} - {{ sentiment.get_name_display.capitalize }}</h2>
+  </div>
+</div>
+
+{% if categories %}
+  <div class="row">
+    {% for category in categories %}
+      <div class="col-md-4 mb-4">
+        <div class="card news-card">
+          <div class="card-header">
+            <h3 class="mb-0">{{ category.name }}</h3>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="card-text">Explore {{ sentiment.get_name_display|lower }} {{ category.name|lower }} news from {{ region }}.</p>
+            <div class="d-grid mt-auto">
+              <a href="{% url 'category' region.name.lower sentiment.get_name_display|lower category.name|lower %}" class="btn btn-outline-light">
+                View Articles
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">
+    <p>No categories found for {{ sentiment.get_name_display|lower }} news from {{ region }}.</p>
+  </div>
+{% endif %}
+{% endblock %}

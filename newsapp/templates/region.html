@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-md-12">
+    <h2>{{ region.name.capitalize }}</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 mb-4">
+    <div class="card news-card">
+      <div class="card-header">
+        <h3 class="mb-0">Positive News</h3>
+      </div>
+      <div class="card-body d-flex flex-column">
+        <p class="card-text">Explore positive news articles from {{ region }}.</p>
+        <div class="d-grid mt-auto">
+          <a href="{% url 'sentiment' region.name.lower 'positive' %}" class="btn btn-outline-light">View Positive News</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 mb-4">
+    <div class="card news-card">
+      <div class="card-header">
+        <h3 class="mb-0">Negative News</h3>
+      </div>
+      <div class="card-body d-flex flex-column">
+        <p class="card-text">Explore negative news articles from {{ region }}.</p>
+        <div class="d-grid mt-auto">
+          <a href="{% url 'sentiment' region.name.lower 'negative' %}" class="btn btn-outline-light">View Negative News</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 mb-4">
+    <div class="card news-card">
+      <div class="card-header">
+        <h3 class="mb-0">Neutral News</h3>
+      </div>
+      <div class="card-body d-flex flex-column">
+        <p class="card-text">Explore neutral news articles from {{ region }}.</p>
+        <div class="d-grid mt-auto">
+          <a href="{% url 'sentiment' region.name.lower 'neutral' %}" class="btn btn-outline-light">View Neutral News</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

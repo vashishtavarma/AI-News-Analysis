@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-md-12">
+    <h2>{{ region.name.capitalize }} - {{ sentiment.get_name_display.capitalize }} - {{ category.name.capitalize }}</h2>
+  </div>
+</div>
+
+{% if articles %}
+  <div class="row">
+    <div class="col-md-12">
+      {% for article in articles %}
+        <div class="news-item {% if sentiment.name == 'POS' %}positive{% elif sentiment.name == 'NEG' %}negative{% else %}neutral{% endif %}">
+          <h4>{{ article.title }}</h4>
+          <p>{{ article.text|truncatewords:50 }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Published: {{ article.published_at|date:"F j, Y" }}</small>
+            <a href="{{ article.url }}" class="btn btn-sm btn-outline-light" target="_blank">
+              Read Full Article
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <div class="alert alert-info">
+    <p>No articles found for {{ sentiment.get_name_display|lower }} {{ category.name|lower }} news from {{ region }}.</p>
+  </div>
+{% endif %}
+{% endblock %}
