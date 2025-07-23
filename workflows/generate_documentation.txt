@@ -1,0 +1,25 @@
+# Documentation Generation Workflow for AI-News-Analysis
+
+## 1. Scan Codebase
+- Recursively scan all Python files and Django project structure.
+
+## 2. Gather Context
+- Collect all docstrings and comments.
+- Infer missing documentation from code structure and usage.
+
+## 3. Draft Documentation
+- Write a new README.md including:
+  - Project overview
+  - Key features
+  - Tech stack
+  - Architecture
+  - API reference
+  - Usage examples
+  - Setup instructions
+  - Migration notes
+  - References
+- Do NOT include commit message or 'Safety & Quality Checks' section in README.md.
+
+## 4. Merge & Write
+- Merge with any existing README.md, preserving custom content.
+- Overwrite README.md with the new content.
