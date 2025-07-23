@@ -1,5 +1,6 @@
 # Ignore Python virtual environments
 venv/
+.windsurf/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
